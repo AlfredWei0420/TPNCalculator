@@ -1,0 +1,78 @@
+/* pages/TNPCal/TNPCal.wxss */
+.input {
+  display: flex;
+  margin: 1% auto
+}
+
+.tittle {
+  margin-left: 2%;
+  width: 48%;
+}
+
+.hr {
+  border: 1px solid #CCC;
+  opacity: 0.8;
+  width: 95%;
+  margin: 2% auto;
+}
+
+.page-info{
+ text-align: center;
+ font-size: 50rpx;
+ color: #62b324;
+}
+
+.box {
+  border: 1rpx solid #215584;
+}
+
+.btnGroup{
+  display: flex;
+  margin: 1% auto
+}
+.reset {
+  background-color: #3485ff;
+  color: #fff
+}
+
+.output{
+  display: flex;
+  margin: 1% auto
+}
+
+.patient-output-info {
+  display: flex;
+  background-color: #bbb2ee;
+  font-style: italic;
+  font-size: 50rpx;
+  color:  #fff;
+}
+
+.thanks-letter{
+  font-size: 23rpx;
+  font-style: bold;
+  text-align:center;
+}
+
+.result{
+  width: 20%;
+}
+
+.ref {
+  background-color: #f8c11e;
+  color: #f5fac5;
+  width: 29%;
+}
+
+.hide {
+ display: none;
+}
+.show { 
+ display: block;
+}
+
+.Warning-message {
+  color: red;
+  font-size: 25rpx;
+  text-align:center;
+}

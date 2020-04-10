@@ -1,0 +1,196 @@
+<!--pages/TNPCal/TNPCal.wxml-->
+<view class="content">
+  <view class="input-info">
+    <form bindreset="formReset" bindsubmit="calculate">
+      <view class="patient-info">
+      <!--name module-->
+        <view class="input patient-name">
+          <view class="tittle">患者姓名</view>
+          <view class="name-string">
+            <input data-name="inPutPatientName" bindinput="patientInfoInput" placeholder="请输入患者姓名" placeholder-style="color: #ccc999;" value="{{patientName}}"></input>
+          </view>
+        </view>
+      <!--weight module-->
+        <view class="input patient-weight">
+          <view class="tittle">患者体重(kg)</view>
+          <view class="weight-string">
+            <input type="digit" data-name="inPutPatientWeight" bindinput="patientInfoInput" placeholder="请输入患者体重(kg)" placeholder-style="color: #ccc999;" value="{{patientWeight}}"></input>
+          </view>
+        </view>
+      </view>
+      <!--zone line-->
+      <view class="hr"></view>
+      <view class="prescription">
+        <view class="page-info">预估处方计量</view>
+        <view class="input tenPerGlucose">
+          <view class="tittle">10%葡萄糖(ml)</view>
+          <view class="box tenPerGlucose-number">
+            <input type="digit" data-name="tenPerGlucose" bindinput="inputValue" value="{{inputValue.tenPerGlucose}}"></input>
+          </view>
+        </view>
+        <view class="input fiftyPerGlucose">
+          <view class="tittle">50%葡萄糖(ml)</view>
+          <view class="box fiftyPerGlucose-number">
+            <input type="digit" data-name="fiftyPerGlucose" bindinput="inputValue" value="{{inputValue.fiftyPerGlucose}}"></input>
+          </view>
+        </view>
+        <view class="input twentyPerLipidEmulsion">
+          <view class="tittle">20%脂肪乳(ml)</view>
+          <view class="box twentyPerLipidEmulsion-number">
+            <input type="digit" data-name="twentyPerLipidEmulsion" bindinput="inputValue" value="{{inputValue.twentyPerLipidEmulsion}}"></input>
+          </view>
+        </view>
+        <view class="input aminoAcid">
+          <view class="tittle">氨基酸(ml)</view>
+          <view class="box aminoAcid-number">
+            <input type="digit" data-name="aminoAcid" bindinput="inputValue" value="{{inputValue.aminoAcid}}"></input>
+          </view>
+        </view>
+        <view class="input fifteenPerKCL">
+          <view class="tittle">15%氯化钾(ml)</view>
+          <view class="box fifteenPerKCL-number">
+            <input type="digit" data-name="fifteenPerKCL" bindinput="inputValue" value="{{inputValue.fifteenPerKCL}}"></input>
+          </view>
+        </view>
+        <view class="input tenPerNaCl">
+          <view class="tittle">10%氯化钠(ml)</view>
+          <view class="box tenPerNaCl-number">
+            <input type="digit" data-name="tenPerNaCl" bindinput="inputValue" value="{{inputValue.tenPerNaCl}}"></input>
+          </view>
+        </view>
+        <view class="input microElement">
+          <view class="tittle">微量元素ml</view>
+          <view class="box microElement-number">
+            <input type="digit" data-name="microElement" bindinput="inputValue" value="{{inputValue.microElement}}"></input>
+          </view>
+        </view>
+        <view class="input waterSoluteVitamins">
+          <view class="tittle">水溶性维生素支</view>
+          <view class="box waterSoluteVitamins-string">
+            <input type="digit" data-name="waterSoluteVitamins" bindinput="inputValue" value="{{inputValue.waterSoluteVitamins}}"></input>
+          </view>
+        </view>
+        <view class="input fatSoluteVitamins">
+          <view class="tittle">脂溶性维生素支</view>
+          <view class="box fatSoluteVitamins-number">
+            <input type="digit" data-name="fatSoluteVitamins" bindinput="inputValue" value="{{inputValue.fatSoluteVitamins}}"></input>
+          </view>
+        </view>
+        <view class="input insulin">
+          <view class="tittle">胰岛素iu</view>
+          <view class="box insulin-number">
+            <input type="digit" data-name="insulin" bindinput="inputValue" value="{{inputValue.insulin}}"></input>
+          </view>
+        </view>
+      </view>
+      <view class="btnGroup">
+      <button formType="reset" class="reset button" bindtap="reset">Reset</button>
+      <button type="primary" class="calculate button" form-type="submit" plain="{{plain}}">Compute</button>
+      </view>
+    </form>
+  </view>
+
+  <view class="Warning-message {{showWarning?'show':'hide'}}">{{warningMes}}</view>
+  <view class="output-info {{showView?'show':'hide'}}" >
+    <view class="hr"></view>
+    <view class="thanks-letter">特别鸣谢安徽医科大学王洁玲医生 CopyRight© Alfred_W</view>
+    <view class="page-info">TPN 结果</view>
+    <view class="patient-output-info">
+      <text class="tittle patient-name">{{outPutPatientName}}</text>
+      <text class="patient-weight">{{outPatientWeight}}(kg)</text>
+    </view>
+    <view class="output totalLiquid">
+      <view class="tittle">总热量低值(Kcal)</view>
+      <view class="result totalLiquid">{{outputValue.totalEngergyLow}}</view>
+    </view>
+      <view class="output totalLiquid">
+      <view class="tittle">总热量高值(Kcal)</view>
+      <view class="result totalLiquid">{{outputValue.totalEngergyHigh}}</view>
+    </view>
+    <view class="output totalLiquid">
+      <view class="tittle">总液体量(ml)</view>
+      <view class="result totalLiquid">{{outputValue.totalLiquid}}</view>
+      <view class="ref">1500-3000ml</view>
+    </view>
+    <view class="output nonProteinCal">
+      <view class="tittle">非蛋白质热量(Kcal)</view>
+      <view class="result nonProteinCal">{{outputValue.nonProteinCal}}</view>
+      <view class="ref">25-30Kcal/kg</view>
+    </view>
+    <view class="output glucoseContain">
+      <view class="tittle">葡萄糖含量(g)</view>
+      <view class="result glucoseContain">{{outputValue.glucoseContain}}</view>
+      <!-- <view class="ref">25-30Kcal/kg</view> -->
+    </view>
+    <view class="output lipidEmulsionContain">
+      <view class="tittle">脂肪乳含量(g)</view>
+      <view class="result lipidEmulsionContain">{{outputValue.lipidEmulsionContain}}</view>
+      <!-- <view class="ref">25-30Kcal/kg</view> -->
+    </view>
+    <view class="output aminoAcidContain">
+      <view class="tittle">氨基酸含量(g)</view>
+      <view class="result aminoAcidContain">{{outputValue.aminoAcidContain}}</view>
+      <!-- <view class="ref">25-30Kcal/kg</view> -->
+    </view>
+    <view class="output N">
+      <view class="tittle">N(g)</view>
+      <view class="result N">{{outputValue.n}}</view>
+      <!-- <view class="ref">25-30Kcal/kg</view> -->
+    </view>
+    <view class="output finalGlucoseConcentration">
+      <view class="tittle">葡萄糖终浓度(%)</view>
+      <view class="result finalGlucoseConcentration">{{outputValue.finalGlucoseConcentration}}</view>
+      <view class="ref">3.3%-23%</view>
+    </view>
+    <view class="output glucosAmount">
+      <view class="tittle">葡萄糖占量(%)</view>
+      <view class="result glucosAmount">{{outputValue.glucosAmount}}</view>
+      <view class="ref">50%-70%</view>
+    </view>
+    <view class="output aminoAcidConcentration">
+      <view class="tittle">氨基酸浓度(%)</view>
+      <view class="result aminoAcidConcentration">{{outputValue.aminoAcidConcentration}}</view>
+      <view class="ref">≥2.5%</view>
+    </view>
+    <view class="output thermalNRatio">
+      <view class="tittle">热氮比</view>
+      <view class="result thermalNRatio">{{outputValue.thermalNRatio}}</view>
+      <view class="ref">100-150 : 1</view>
+    </view>
+    <view class="output sugarLipidRatio">
+      <view class="tittle">糖脂比</view>
+      <view class="result sugarLipidRatio">{{outputValue.sugarLipidRatio}}</view>
+      <view class="ref">1-2 : 1</view>
+    </view>
+    <view class="output lipidEmulsionAmount">
+      <view class="tittle">脂肪乳占量</view>
+      <view class="result lipidEmulsionAmount">{{outputValue.lipidEmulsionAmount}}</view>
+      <view class="ref">30%-50%, 肿瘤患者≥50%</view>
+    </view>
+    <view class="output OSM">
+      <view class="tittle">渗透压mOSM(%)</view>
+      <view class="result OSM">{{outputValue.osm}}</view>
+      <!-- <view class="ref">50%-70%</view> -->
+    </view>
+    <view class="output glucosInsulinRation">
+      <view class="tittle">葡萄糖/胰岛素</view>
+      <view class="result glucosInsulinRation">{{outputValue.glucosInsulinRation}}</view>
+      <view class="ref">10-15 : 1</view>
+    </view>
+    <view class="output NaCl">
+      <view class="tittle">氯化钠</view>
+      <view class="result NaCl">{{outputValue.naCl}}</view>
+      <view class="ref">4-6g/d</view>
+    </view>
+    <view class="output KCl">
+      <view class="tittle">氯化钾</view>
+      <view class="result KCl">{{outputValue.kCl}}</view>
+      <view class="ref">3-5g/d</view>
+    </view>
+    <view class="output speed">
+      <view class="tittle">滴速</view>
+      <view class="result speed"></view>
+      <view class="ref">120-150ml</view>
+    </view>
+  </view>
+</view>
