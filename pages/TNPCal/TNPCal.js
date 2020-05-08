@@ -21,7 +21,11 @@ Page({
       "microElement": "",
       "waterSoluteVitamins": "",
       "fatSoluteVitamins": "",
-      "insulin": ""
+      "insulin": "",
+      "aminoAcidEight": "",
+      "alanylGlutamine": "",
+      "compoundAminoAcid": "",
+      "aminoAcidEleven": ""
     },
     outputValue: {
       "totalLiquid": "",
@@ -47,7 +51,11 @@ Page({
       "tenPerGlucose": "10%葡萄糖",
       "fiftyPerGlucose": "50%葡萄糖",
       "twentyPerLipidEmulsion": "20%脂肪乳",
-      "aminoAcid": "氨基酸",
+      "aminoAcid": "5%氨基酸",
+      "aminoAcidEight": "8.5%氨基酸",
+      "aminoAcidEleven": "11.4%氨基酸",
+      "alanylGlutamine": "丙氨酰谷氨酰胺",
+      "compoundAminoAcid": "复方氨基酸(15)双肽(2)注射液(ml)",
       "fifteenPerKCL": "15%氯化钾",
       "tenPerNaCl": "10%氯化钠",
       "microElement": "微量元素",
@@ -87,11 +95,11 @@ Page({
     var missingItemArr = [];
     var inputValue = this.data.inputValue;
     var warningMes = "请输入:";
-    var totalLiquid = Number(inputValue["tenPerGlucose"]) + Number(inputValue["fiftyPerGlucose"]) + Number(inputValue["twentyPerLipidEmulsion"]) + Number(inputValue["aminoAcid"]) + Number(inputValue["fifteenPerKCL"]) + Number(inputValue["tenPerNaCl"]) + Number(inputValue["microElement"]);
+    var totalLiquid = Number(inputValue["tenPerGlucose"]) + Number(inputValue["fiftyPerGlucose"]) + Number(inputValue["twentyPerLipidEmulsion"]) + Number(inputValue["aminoAcid"]) + Number(inputValue["fifteenPerKCL"]) + Number(inputValue["tenPerNaCl"]) + Number(inputValue["microElement"]) + Number(inputValue["aminoAcidEight"]) + Number(inputValue["alanylGlutamine"]) + Number(inputValue["compoundAminoAcid"]) + Number(inputValue["aminoAcidEleven"]);
     var lipidEmulsionContain = inputValue["twentyPerLipidEmulsion"] *20 / 100;
     var glucoseContain = inputValue["tenPerGlucose"] / 10 + inputValue["fiftyPerGlucose"] / 100 * 50;
     var nonProteinCal = glucoseContain * 4 + lipidEmulsionContain * 9;
-    var aminoAcidContain = inputValue["aminoAcid"] / 200 * 20.65;
+    var aminoAcidContain = inputValue["aminoAcid"] * 0.05 + inputValue["aminoAcidEight"] * 0.085 + inputValue["aminoAcidEleven"] * 0.114 + inputValue["alanylGlutamine"] * 0.2 + inputValue["compoundAminoAcid"] * 0.134;
     var n = aminoAcidContain / 6.25;
     var finalGlucoseConcentration = glucoseContain / totalLiquid * 100;
     var glucosAmount = glucoseContain * 4 / nonProteinCal * 100;

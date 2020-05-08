@@ -76,3 +76,6 @@
   font-size: 25rpx;
   text-align:center;
 }
+/* .compoundAminoAcid >.input{
+  font-size: 25rpx;
+} */

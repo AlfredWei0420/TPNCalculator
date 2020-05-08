@@ -41,9 +41,33 @@
           </view>
         </view>
         <view class="input aminoAcid">
-          <view class="tittle">氨基酸(ml)</view>
+          <view class="tittle">5%氨基酸(ml)</view>
           <view class="box aminoAcid-number">
             <input type="digit" data-name="aminoAcid" bindinput="inputValue" value="{{inputValue.aminoAcid}}"></input>
+          </view>
+        </view>
+        <view class="input aminoAcidEight">
+          <view class="tittle">8.5%氨基酸(ml)</view>
+          <view class="box aminoAcid-number">
+            <input type="digit" data-name="aminoAcidEight" bindinput="inputValue" value="{{inputValue.aminoAcidEight}}"></input>
+          </view>
+        </view>
+        <view class="input aminoAcidEleven">
+          <view class="tittle">11.4%氨基酸(ml)</view>
+          <view class="box aminoAcid-number">
+            <input type="digit" data-name="aminoAcidEleven" bindinput="inputValue" value="{{inputValue.aminoAcidEleven}}"></input>
+          </view>
+        </view>
+        <view class="input alanylGlutamine">
+          <view class="tittle">丙氨酰谷氨酰胺(ml)</view>
+          <view class="box aminoAcid-number">
+            <input type="digit" data-name="alanylGlutamine" bindinput="inputValue" value="{{inputValue.alanylGlutamine}}"></input>
+          </view>
+        </view>
+        <view class="input compoundAminoAcid">
+          <view class="tittle">复方氨基酸(15) 双肽(2) 注射液(ml)</view>
+          <view class="box aminoAcid-number">
+            <input type="digit" data-name="compoundAminoAcid" bindinput="inputValue" value="{{inputValue.compoundAminoAcid}}"></input>
           </view>
         </view>
         <view class="input fifteenPerKCL">
